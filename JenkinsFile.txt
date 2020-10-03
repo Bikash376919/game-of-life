@@ -1,0 +1,12 @@
+node('htms'){
+        stage('git'){
+            git 'https://github.com/wakaleo/game-of-life.git'
+        }
+        stage('build'){
+       sh 'mvn clean package'     
+        }
+       stage ('Test Results'){
+       junit 'gameoflife-web/surefire-reports/*.xml'
+}
+
+}
