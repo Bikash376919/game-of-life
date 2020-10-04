@@ -1,4 +1,10 @@
 node('htms'){
+properties(
+    [
+        ...  , // other properties that you have
+        pipelineTriggers([cron('5 0 * 8 *')]),
+    ]
+)
         stage('git'){
             git 'https://github.com/wakaleo/game-of-life.git'
         }
