@@ -1,5 +1,5 @@
 node('htms'){
-properties([pipelineTriggers([cron('5 0 * 8 *')])]
+properties([pipelineTriggers([cron('8 0 * 8 *')])]
 )
         stage('git'){
             git 'https://github.com/Bikash376919/game-of-life.git'
