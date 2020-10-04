@@ -1,12 +1,8 @@
 node('htms'){
-properties(
-    [
-        ...  , // other properties that you have
-        pipelineTriggers([cron('5 0 * 8 *')]),
-    ]
+properties([pipelineTriggers([cron('5 0 * 8 *')])]
 )
         stage('git'){
-            git 'https://github.com/wakaleo/game-of-life.git'
+            git 'https://github.com/Bikash376919/game-of-life.git'
         }
         stage('build'){
        sh 'mvn clean package'     
