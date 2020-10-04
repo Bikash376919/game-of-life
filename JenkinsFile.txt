@@ -1,12 +1,16 @@
-node('htms'){
+pipeline {
+    agent { label 'htms' }
+    triggers { cron('30 * * * 1-5') }
+    stages {
         stage('git'){
-            git 'https://github.com/wakaleo/game-of-life.git'
+            steps {
+                git branch: 'DeclarativePipeline', url: 'https://github.com/Bikash376919/game-of-life.git'
+            }
         }
-        stage('build'){
-       sh 'mvn clean package'     
+        stage('compile') {
+            steps {
+                sh 'mvn clean package'
+            }
         }
-       stage ('Test Results'){
-       junit 'gameoflife-web/target/surefire-reports/*.xml'
-}
-
+    }
 }
